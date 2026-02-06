@@ -33,11 +33,11 @@ def run(player_id:int, server: socket, active_terminal: Terminal, param):
         if(len(pages) > 1):    
             overwrite(c.RESET + c.YELLOW + f"\rModule has {len(pages)} help pages available. Type `help <module> <page #>` for more information.")
         if(len(param) == 2):    # if page_num is provided
-            page_num = int(param[1])
             if not(param[1].isdigit()):
                 overwrite(c.RESET + c.RED + "\rInvalid parameter. Type `help <module> <page #>` for more information.")
                 return
-            elif(page_num < 1 or page_num > len(pages)):
+            page_num = int(param[1])
+            if(page_num < 1 or page_num > len(pages)):
                 overwrite(c.RESET + c.RED + f"\r{module.upper()} help does not have page {int(param[1])}! Please select another page number.")
                 return
             else:
